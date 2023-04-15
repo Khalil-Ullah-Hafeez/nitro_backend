@@ -1,3 +1,5 @@
+import cv2
+
 def shadowDetection(img):
 
 
