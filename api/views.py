@@ -1,6 +1,8 @@
 from django.http import HttpResponse
-
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+
+from . import models
 
 def index(request):
     return HttpResponse("Hello, world. You're at the Nitro Backend index.")
@@ -18,11 +20,11 @@ def handler(request):
 
 
     # # Save Image
-    # image = models.Image(photo=request.FILES.get('photo'), processed_photo=request.FILES.get('photo'))
-    # image.detectshadow()
-    # result = image.compute()
+    image = models.Image(photo=request.FILES.get('photo'), processed_photo=request.FILES.get('photo'))
+    image.detectshadow()
+    result = image.compute()
 
     # Return response
-    return HttpResponse("End of the view")
+    return JsonResponse(result)
 
    
