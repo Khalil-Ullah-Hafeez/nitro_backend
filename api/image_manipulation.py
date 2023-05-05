@@ -20,7 +20,7 @@ def shadowDetection(img):
     return red
 
 
-def computeResult(img):
+def computeResult(img, days):
     # In this example, img.split() returns a tuple of three individual band images, which are then saved as separate grayscale images representing the red, green, and blue channels of the original RGB image.
     red_band, green_band, blue_band = img.split()
 
@@ -48,4 +48,14 @@ def computeResult(img):
     # M10 = (R - G) / (R + G)
     M10 = (red_concentration - green_concentration) / (red_concentration + green_concentration)
 
-    return { 'score_1': M4, 'score_2': M7, 'score_3': M10 }
+    GI = ( 2 * red_concentration * ( green_concentration - blue_concentration ) ) / green_concentration + blue_concentration
+
+    YP = GI / days
+
+    RI = 4.4359
+    GN = 1
+    NUE = 0.6
+
+    NR = YP * RI * GN / NUE
+
+    return NR

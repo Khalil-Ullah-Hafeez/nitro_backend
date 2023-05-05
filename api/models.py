@@ -30,6 +30,6 @@ class Image(models.Model):
         self.processed_photo.save(str(self.processed_photo), ContentFile(image_png))
 
 
-    def compute(self):
+    def compute(self, days):
         pil_image = PIL.Image.open(self.photo)
-        return computeResult(pil_image)
+        return computeResult(pil_image, days)

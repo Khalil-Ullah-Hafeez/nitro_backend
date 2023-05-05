@@ -6,3 +6,6 @@ pyvenv.cfg
 images
 processed_images
 
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
