@@ -22,9 +22,9 @@ def handler(request):
     # # Save Image
     image = models.Image(photo=request.FILES.get('photo'), processed_photo=request.FILES.get('photo'))
     image.detectshadow()
-    result = image.compute()
+    result = image.compute(float(request.POST.get('days')))
 
     # Return response
-    return JsonResponse(result)
+    return JsonResponse({ 'days': request.POST.get('days'), 'nitrogen_rate': result})
 
    
